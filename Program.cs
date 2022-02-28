@@ -1,8 +1,28 @@
 ﻿using System;
 
+Console.WriteLine("Please choose a difficulty level: Easy(1), Medium(2), Hard(3).");
+
+int chosenDifficulty = int.Parse(Console.ReadLine());
 
 int secretNumber = new Random().Next(1, 100);
-int guessesLeft = 4;
+int guessesLeft = 0;
+
+switch (chosenDifficulty) {
+    case 1 :
+    guessesLeft = 8;
+    break;
+    case 2 :
+    guessesLeft = 6;
+    break;
+    case 3 :
+    guessesLeft = 4;
+    break;
+
+    default: 
+    guessesLeft = 1;
+    break;
+}
+
 int guessNumber = 1;
 
 while (guessNumber <= guessesLeft)
@@ -16,9 +36,16 @@ if (guess==secretNumber){
     break;
 }
 else {
-    Console.WriteLine("Sorry, you are wrong");
+    if (guess<guessNumber){
+    Console.WriteLine("Sorry, you guessed too low!");
+    }
 
-    if (guessesLeft - guessNumber == 1) {
+    if(guess-guessNumber==1)
+    {
+        Console.WriteLine("Sorry, you guessed too high!");
+    }
+
+    if (guessesLeft-guessNumber == 1) {
     Console.WriteLine($"You have 1 guess remaining.");
     }
     else
