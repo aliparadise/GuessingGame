@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-int secretNumber = 42;
+int secretNumber = new Random().Next(1, 100);
 int guessesLeft = 4;
 int guessNumber = 1;
 
@@ -17,6 +17,14 @@ if (guess==secretNumber){
 }
 else {
     Console.WriteLine("Sorry, you are wrong");
+
+    if (guessesLeft - guessNumber == 1) {
+    Console.WriteLine($"You have 1 guess remaining.");
+    }
+    else
+    {
+    Console.WriteLine($"You have {guessesLeft - guessNumber} guesses remaining.");
+    }
 }
 guessNumber++;    
 }
